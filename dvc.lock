@@ -1,0 +1,86 @@
+schema: '2.0'
+stages:
+  ingestion:
+    cmd: python src/ingestion.py
+    deps:
+    - path: data/raw/household_power_consumption.txt
+      hash: md5
+      md5: e05286cd4a257d80c3f0407b350df7dd
+      size: 132960755
+    - path: src/ingestion.py
+      hash: md5
+      md5: ec38e9573ab80c6fed8975d9260b5439
+      size: 377
+    outs:
+    - path: data/processed/raw_loaded.csv
+      hash: md5
+      md5: 8986e62191a0f5fab324ed550b13062c
+      size: 126786935
+  preprocessing:
+    cmd: python src/preprocessing.py
+    deps:
+    - path: data/processed/raw_loaded.csv
+      hash: md5
+      md5: 8986e62191a0f5fab324ed550b13062c
+      size: 126786935
+    - path: src/preprocessing.py
+      hash: md5
+      md5: c6b2a17c34e8b407e339ffe6b98aa8d0
+      size: 960
+    outs:
+    - path: data/processed/clean.csv
+      hash: md5
+      md5: 368eb3ba7d907ce2c76788e1d61cb6a8
+      size: 113204632
+  feature_engineering:
+    cmd: python src/feature_engineering.py
+    deps:
+    - path: data/processed/clean.csv
+      hash: md5
+      md5: 368eb3ba7d907ce2c76788e1d61cb6a8
+      size: 113204632
+    - path: src/feature_engineering.py
+      hash: md5
+      md5: 1715c3eb74faf89bbffbf07235f868e1
+      size: 978
+    outs:
+    - path: data/processed/features.csv
+      hash: md5
+      md5: b2e6cec87a6c35e35aa760cbea0ea056
+      size: 6621461
+  training:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/features.csv
+      hash: md5
+      md5: b2e6cec87a6c35e35aa760cbea0ea056
+      size: 6621461
+    - path: src/train.py
+      hash: md5
+      md5: b2ed5a6559b604ccdf5e7e77deed76d5
+      size: 938
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: cb5a57ac46934fdf7842ea62bec7aed6
+      size: 278177
+  evaluation:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/processed/features.csv
+      hash: md5
+      md5: b2e6cec87a6c35e35aa760cbea0ea056
+      size: 6621461
+    - path: models/model.pkl
+      hash: md5
+      md5: cb5a57ac46934fdf7842ea62bec7aed6
+      size: 278177
+    - path: src/evaluate.py
+      hash: md5
+      md5: ee2265e47990da9681880443c25ede33
+      size: 969
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 0c72e2db1375d9d42670a47b4714ff07
+      size: 28

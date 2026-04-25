@@ -1,0 +1,37 @@
+stages:
+  ingestion:
+    cmd: python src/ingestion.py
+    deps:
+    - data/raw/household_power_consumption.txt
+    - src/ingestion.py
+    outs:
+    - data/processed/raw_loaded.csv
+  preprocessing:
+    cmd: python src/preprocessing.py
+    deps:
+    - data/processed/raw_loaded.csv
+    - src/preprocessing.py
+    outs:
+    - data/processed/clean.csv
+  feature_engineering:
+    cmd: python src/feature_engineering.py
+    deps:
+    - data/processed/clean.csv
+    - src/feature_engineering.py
+    outs:
+    - data/processed/features.csv
+  training:
+    cmd: python src/train.py
+    deps:
+    - data/processed/features.csv
+    - src/train.py
+    outs:
+    - models/model.pkl
+  evaluation:
+    cmd: python src/evaluate.py
+    deps:
+    - data/processed/features.csv
+    - models/model.pkl
+    - src/evaluate.py
+    outs:
+    - metrics.json
