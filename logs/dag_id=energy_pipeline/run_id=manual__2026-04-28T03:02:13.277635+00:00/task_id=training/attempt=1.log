@@ -1,0 +1,108 @@
+[2026-04-28T03:03:36.091+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.training manual__2026-04-28T03:02:13.277635+00:00 [queued]>
+[2026-04-28T03:03:36.099+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.training manual__2026-04-28T03:02:13.277635+00:00 [queued]>
+[2026-04-28T03:03:36.100+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2026-04-28T03:03:36.114+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): training> on 2026-04-28 03:02:13.277635+00:00
+[2026-04-28T03:03:36.120+0000] {standard_task_runner.py:60} INFO - Started process 230 to run task
+[2026-04-28T03:03:36.125+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'training', 'manual__2026-04-28T03:02:13.277635+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmp8xzdhwml']
+[2026-04-28T03:03:36.127+0000] {standard_task_runner.py:88} INFO - Job 12: Subtask training
+[2026-04-28T03:03:36.173+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.training manual__2026-04-28T03:02:13.277635+00:00 [running]> on host 0fcbcd70b84a
+[2026-04-28T03:03:36.236+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='training' AIRFLOW_CTX_EXECUTION_DATE='2026-04-28T03:02:13.277635+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-28T03:02:13.277635+00:00'
+[2026-04-28T03:03:36.237+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-28T03:03:36.238+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/airflow/src/train.py']
+[2026-04-28T03:03:36.249+0000] {subprocess.py:86} INFO - Output:
+[2026-04-28T03:03:38.839+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-04-28T03:03:38.840+0000] {subprocess.py:93} INFO -   File "/opt/airflow/src/train.py", line 6, in <module>
+[2026-04-28T03:03:38.840+0000] {subprocess.py:93} INFO -     import mlflow
+[2026-04-28T03:03:38.841+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/__init__.py", line 44, in <module>
+[2026-04-28T03:03:38.841+0000] {subprocess.py:93} INFO -     from mlflow import (
+[2026-04-28T03:03:38.842+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/genai/__init__.py", line 1, in <module>
+[2026-04-28T03:03:38.842+0000] {subprocess.py:93} INFO -     from mlflow.genai import (
+[2026-04-28T03:03:38.843+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/genai/judges/__init__.py", line 2, in <module>
+[2026-04-28T03:03:38.844+0000] {subprocess.py:93} INFO -     from mlflow.genai.judges import utils  # noqa: F401
+[2026-04-28T03:03:38.844+0000] {subprocess.py:93} INFO -     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.845+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/genai/judges/utils/__init__.py", line 14, in <module>
+[2026-04-28T03:03:38.846+0000] {subprocess.py:93} INFO -     from mlflow.genai.judges.adapters.litellm_adapter import (
+[2026-04-28T03:03:38.846+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/genai/judges/adapters/litellm_adapter.py", line 25, in <module>
+[2026-04-28T03:03:38.847+0000] {subprocess.py:93} INFO -     from mlflow.gateway.constants import MLFLOW_GATEWAY_CALLER_HEADER, GatewayCaller
+[2026-04-28T03:03:38.848+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/gateway/__init__.py", line 1, in <module>
+[2026-04-28T03:03:38.849+0000] {subprocess.py:93} INFO -     from mlflow.gateway.utils import get_gateway_uri, set_gateway_uri
+[2026-04-28T03:03:38.849+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/gateway/utils.py", line 10, in <module>
+[2026-04-28T03:03:38.850+0000] {subprocess.py:93} INFO -     from fastapi import HTTPException
+[2026-04-28T03:03:38.851+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/fastapi/__init__.py", line 7, in <module>
+[2026-04-28T03:03:38.852+0000] {subprocess.py:93} INFO -     from .applications import FastAPI as FastAPI
+[2026-04-28T03:03:38.852+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/fastapi/applications.py", line 6, in <module>
+[2026-04-28T03:03:38.853+0000] {subprocess.py:93} INFO -     from fastapi import routing
+[2026-04-28T03:03:38.853+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/fastapi/routing.py", line 35, in <module>
+[2026-04-28T03:03:38.854+0000] {subprocess.py:93} INFO -     from fastapi import params
+[2026-04-28T03:03:38.854+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/fastapi/params.py", line 8, in <module>
+[2026-04-28T03:03:38.855+0000] {subprocess.py:93} INFO -     from fastapi.openapi.models import Example
+[2026-04-28T03:03:38.855+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/fastapi/openapi/models.py", line 61, in <module>
+[2026-04-28T03:03:38.856+0000] {subprocess.py:93} INFO -     class Contact(BaseModelWithConfig):
+[2026-04-28T03:03:38.856+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_model_construction.py", line 256, in __new__
+[2026-04-28T03:03:38.857+0000] {subprocess.py:93} INFO -     complete_model_class(
+[2026-04-28T03:03:38.857+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_model_construction.py", line 667, in complete_model_class
+[2026-04-28T03:03:38.858+0000] {subprocess.py:93} INFO -     schema = gen_schema.generate_schema(cls)
+[2026-04-28T03:03:38.858+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.859+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 744, in generate_schema
+[2026-04-28T03:03:38.859+0000] {subprocess.py:93} INFO -     schema = self._generate_schema_inner(obj)
+[2026-04-28T03:03:38.860+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.860+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1028, in _generate_schema_inner
+[2026-04-28T03:03:38.860+0000] {subprocess.py:93} INFO -     return self._model_schema(obj)
+[2026-04-28T03:03:38.861+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.861+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 858, in _model_schema
+[2026-04-28T03:03:38.861+0000] {subprocess.py:93} INFO -     {k: self._generate_md_field_schema(k, v, decorators) for k, v in fields.items()},
+[2026-04-28T03:03:38.862+0000] {subprocess.py:93} INFO -     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.862+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 858, in <dictcomp>
+[2026-04-28T03:03:38.863+0000] {subprocess.py:93} INFO -     {k: self._generate_md_field_schema(k, v, decorators) for k, v in fields.items()},
+[2026-04-28T03:03:38.863+0000] {subprocess.py:93} INFO -         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.863+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1235, in _generate_md_field_schema
+[2026-04-28T03:03:38.864+0000] {subprocess.py:93} INFO -     schema, metadata = self._common_field_schema(name, field_info, decorators)
+[2026-04-28T03:03:38.864+0000] {subprocess.py:93} INFO -                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.865+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1289, in _common_field_schema
+[2026-04-28T03:03:38.865+0000] {subprocess.py:93} INFO -     schema = self._apply_annotations(
+[2026-04-28T03:03:38.866+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.866+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 2242, in _apply_annotations
+[2026-04-28T03:03:38.866+0000] {subprocess.py:93} INFO -     schema = get_inner_schema(source_type)
+[2026-04-28T03:03:38.867+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.867+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 83, in __call__
+[2026-04-28T03:03:38.867+0000] {subprocess.py:93} INFO -     schema = self._handler(source_type)
+[2026-04-28T03:03:38.868+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.868+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 2221, in inner_handler
+[2026-04-28T03:03:38.868+0000] {subprocess.py:93} INFO -     schema = self._generate_schema_inner(obj)
+[2026-04-28T03:03:38.869+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.869+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1033, in _generate_schema_inner
+[2026-04-28T03:03:38.869+0000] {subprocess.py:93} INFO -     return self.match_type(obj)
+[2026-04-28T03:03:38.870+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.870+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1151, in match_type
+[2026-04-28T03:03:38.870+0000] {subprocess.py:93} INFO -     return self._match_generic_type(obj, origin)
+[2026-04-28T03:03:38.871+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.871+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1174, in _match_generic_type
+[2026-04-28T03:03:38.872+0000] {subprocess.py:93} INFO -     return self._union_schema(obj)
+[2026-04-28T03:03:38.872+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.872+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1334, in _union_schema
+[2026-04-28T03:03:38.873+0000] {subprocess.py:93} INFO -     choices.append(self.generate_schema(arg))
+[2026-04-28T03:03:38.873+0000] {subprocess.py:93} INFO -                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.873+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 741, in generate_schema
+[2026-04-28T03:03:38.874+0000] {subprocess.py:93} INFO -     schema = self._generate_schema_from_get_schema_method(obj, obj)
+[2026-04-28T03:03:38.874+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:03:38.874+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 921, in _generate_schema_from_get_schema_method
+[2026-04-28T03:03:38.875+0000] {subprocess.py:93} INFO -     schema = get_schema(
+[2026-04-28T03:03:38.875+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^
+[2026-04-28T03:03:38.875+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/networks.py", line 1006, in __get_pydantic_core_schema__
+[2026-04-28T03:03:38.876+0000] {subprocess.py:93} INFO -     import_email_validator()
+[2026-04-28T03:03:38.876+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/networks.py", line 970, in import_email_validator
+[2026-04-28T03:03:38.877+0000] {subprocess.py:93} INFO -     raise ImportError('email-validator version >= 2.0 required, run pip install -U email-validator')
+[2026-04-28T03:03:38.877+0000] {subprocess.py:93} INFO - ImportError: email-validator version >= 2.0 required, run pip install -U email-validator
+[2026-04-28T03:03:39.212+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-04-28T03:03:39.220+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-04-28T03:03:39.225+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=energy_pipeline, task_id=training, execution_date=20260428T030213, start_date=20260428T030336, end_date=20260428T030339
+[2026-04-28T03:03:39.238+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 12 for task training (Bash command failed. The command returned a non-zero exit code 1.; 230)
+[2026-04-28T03:03:39.246+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-04-28T03:03:39.267+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

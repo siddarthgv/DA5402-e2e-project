@@ -9,8 +9,8 @@ stages:
       size: 132960755
     - path: src/ingestion.py
       hash: md5
-      md5: ec38e9573ab80c6fed8975d9260b5439
-      size: 377
+      md5: ddd0b32e6d449ad1512b6aa22fcd5016
+      size: 765
     outs:
     - path: data/processed/raw_loaded.csv
       hash: md5
@@ -25,8 +25,8 @@ stages:
       size: 126786935
     - path: src/preprocessing.py
       hash: md5
-      md5: c6b2a17c34e8b407e339ffe6b98aa8d0
-      size: 960
+      md5: 7d56a5040a69466b9f52e14263e4ec79
+      size: 1193
     outs:
     - path: data/processed/clean.csv
       hash: md5
@@ -41,46 +41,45 @@ stages:
       size: 113204632
     - path: src/feature_engineering.py
       hash: md5
-      md5: 1715c3eb74faf89bbffbf07235f868e1
-      size: 978
+      md5: 0248eff3a5b2dcbf4e03e22e04e089e1
+      size: 1282
     outs:
     - path: data/processed/features.csv
       hash: md5
-      md5: b2e6cec87a6c35e35aa760cbea0ea056
-      size: 6621461
+      md5: 913222586e3320a174ad8ad462f99484
+      size: 6616407
   training:
     cmd: python src/train.py
     deps:
     - path: data/processed/features.csv
       hash: md5
-      md5: b2e6cec87a6c35e35aa760cbea0ea056
-      size: 6621461
+      md5: 913222586e3320a174ad8ad462f99484
+      size: 6616407
     - path: src/train.py
       hash: md5
-      md5: b2ed5a6559b604ccdf5e7e77deed76d5
-      size: 938
+      md5: 7706e944e0c050d77e88622d8e7099e9
+      size: 3081
     outs:
+    - path: metrics/metrics.json
+      hash: md5
+      md5: 2ea63b9b864ef4e5f135f9cd326286f7
+      size: 28
     - path: models/model.pkl
       hash: md5
-      md5: cb5a57ac46934fdf7842ea62bec7aed6
-      size: 278177
+      md5: 036b924fb54903a56fe58ee64c121943
+      size: 470097
   evaluation:
     cmd: python src/evaluate.py
     deps:
     - path: data/processed/features.csv
       hash: md5
-      md5: b2e6cec87a6c35e35aa760cbea0ea056
-      size: 6621461
+      md5: 913222586e3320a174ad8ad462f99484
+      size: 6616407
     - path: models/model.pkl
       hash: md5
-      md5: cb5a57ac46934fdf7842ea62bec7aed6
-      size: 278177
+      md5: 036b924fb54903a56fe58ee64c121943
+      size: 470097
     - path: src/evaluate.py
       hash: md5
-      md5: ee2265e47990da9681880443c25ede33
-      size: 969
-    outs:
-    - path: metrics.json
-      hash: md5
-      md5: 0c72e2db1375d9d42670a47b4714ff07
-      size: 28
+      md5: bf1c14109ed9b4eda117ce92c9e0d7ee
+      size: 1683

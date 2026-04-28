@@ -1,5 +1,6 @@
 import pandas as pd
 import logging
+import os
 
 logging.basicConfig(
     level=logging.INFO,
@@ -27,7 +28,13 @@ def create_features(input_path, output_path):
     df_feat = df_feat.dropna()
 
     df_feat.to_csv(output_path)
+    logging.info(f"Features saved to {output_path}. Shape: {df_feat.shape}")
 
 if __name__ == "__main__":
-    create_features("data/processed/clean.csv",
-                    "data/processed/features.csv")
+    base = os.getenv("AIRFLOW_HOME", os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+    processed_dir = os.getenv("PROCESSED_DIR", os.path.join(base, "data/processed"))
+
+    create_features(
+        os.path.join(processed_dir, "clean.csv"),
+        os.path.join(processed_dir, "features.csv")
+    )

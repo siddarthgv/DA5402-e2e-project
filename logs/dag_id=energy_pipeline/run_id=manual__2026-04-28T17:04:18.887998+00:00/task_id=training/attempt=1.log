@@ -1,0 +1,30 @@
+[2026-04-28T17:06:12.539+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.training manual__2026-04-28T17:04:18.887998+00:00 [queued]>
+[2026-04-28T17:06:12.546+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.training manual__2026-04-28T17:04:18.887998+00:00 [queued]>
+[2026-04-28T17:06:12.546+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-04-28T17:06:12.561+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): training> on 2026-04-28 17:04:18.887998+00:00
+[2026-04-28T17:06:12.570+0000] {standard_task_runner.py:60} INFO - Started process 266 to run task
+[2026-04-28T17:06:12.574+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'training', 'manual__2026-04-28T17:04:18.887998+00:00', '--job-id', '188', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpcd59c7gq']
+[2026-04-28T17:06:12.576+0000] {standard_task_runner.py:88} INFO - Job 188: Subtask training
+[2026-04-28T17:06:12.629+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.training manual__2026-04-28T17:04:18.887998+00:00 [running]> on host 5b1cb9b23751
+[2026-04-28T17:06:12.700+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='training' AIRFLOW_CTX_EXECUTION_DATE='2026-04-28T17:04:18.887998+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-28T17:04:18.887998+00:00'
+[2026-04-28T17:06:12.701+0000] {pipeline_dag.py:37} INFO - Starting training...
+[2026-04-28T17:06:24.886+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/pipeline_dag.py", line 38, in training_task
+    subprocess.run(["python", "/opt/airflow/src/train.py"], check=True)
+  File "/usr/local/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '/opt/airflow/src/train.py']' returned non-zero exit status 1.
+[2026-04-28T17:06:24.896+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=energy_pipeline, task_id=training, execution_date=20260428T170418, start_date=20260428T170612, end_date=20260428T170624
+[2026-04-28T17:06:24.910+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 188 for task training (Command '['python', '/opt/airflow/src/train.py']' returned non-zero exit status 1.; 266)
+[2026-04-28T17:06:24.916+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-04-28T17:06:24.933+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

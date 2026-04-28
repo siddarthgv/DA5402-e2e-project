@@ -1,0 +1,77 @@
+[2026-04-28T03:11:55.280+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T03:11:55.288+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T03:11:55.288+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2026-04-28T03:11:55.301+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): evaluation> on 2026-04-27 00:00:00+00:00
+[2026-04-28T03:11:55.308+0000] {standard_task_runner.py:60} INFO - Started process 382 to run task
+[2026-04-28T03:11:55.312+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'evaluation', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmps2lt9j1r']
+[2026-04-28T03:11:55.315+0000] {standard_task_runner.py:88} INFO - Job 7: Subtask evaluation
+[2026-04-28T03:11:55.362+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [running]> on host 8820d01f94c2
+[2026-04-28T03:11:55.423+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='evaluation' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T03:11:55.424+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-28T03:11:55.425+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/airflow/src/evaluate.py']
+[2026-04-28T03:11:55.435+0000] {subprocess.py:86} INFO - Output:
+[2026-04-28T03:11:57.035+0000] {subprocess.py:93} INFO - 2026-04-28 03:11:57,034 - INFO - Loading dataset...
+[2026-04-28T03:11:57.171+0000] {subprocess.py:93} INFO - 2026-04-28 03:11:57,171 - INFO - Loading model...
+[2026-04-28T03:11:57.235+0000] {subprocess.py:93} INFO - 2026-04-28 03:11:57,231 - INFO - Running predictions...
+[2026-04-28T03:11:57.249+0000] {subprocess.py:93} INFO - 2026-04-28 03:11:57,249 - INFO - RMSE: 0.4567747757148791
+[2026-04-28T03:11:57.253+0000] {subprocess.py:93} INFO - 2026-04-28 03:11:57,250 - INFO - Metrics saved at /opt/airflow/metrics/metrics.json
+[2026-04-28T03:11:57.471+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-04-28T03:11:57.496+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=energy_pipeline, task_id=evaluation, execution_date=20260427T000000, start_date=20260428T031155, end_date=20260428T031157
+[2026-04-28T03:11:57.517+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-28T03:11:57.531+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-28T05:12:58.462+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:12:58.476+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:12:58.477+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-04-28T05:12:58.498+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): evaluation> on 2026-04-27 00:00:00+00:00
+[2026-04-28T05:12:58.509+0000] {standard_task_runner.py:60} INFO - Started process 377 to run task
+[2026-04-28T05:12:58.515+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'evaluation', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpnvy4lojw']
+[2026-04-28T05:12:58.518+0000] {standard_task_runner.py:88} INFO - Job 10: Subtask evaluation
+[2026-04-28T05:12:58.596+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [running]> on host e1402bd03830
+[2026-04-28T05:12:58.720+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='evaluation' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T05:12:58.722+0000] {pipeline_dag.py:42} INFO - Starting evaluation...
+[2026-04-28T05:13:00.900+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-04-28T05:13:00.909+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=energy_pipeline, task_id=evaluation, execution_date=20260427T000000, start_date=20260428T051258, end_date=20260428T051300
+[2026-04-28T05:13:00.931+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-28T05:13:00.952+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-28T05:37:11.765+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:37:11.772+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:37:11.772+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-04-28T05:37:11.785+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): evaluation> on 2026-04-27 00:00:00+00:00
+[2026-04-28T05:37:11.791+0000] {standard_task_runner.py:60} INFO - Started process 325 to run task
+[2026-04-28T05:37:11.795+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'evaluation', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpd_h65o0b']
+[2026-04-28T05:37:11.797+0000] {standard_task_runner.py:88} INFO - Job 6: Subtask evaluation
+[2026-04-28T05:37:11.843+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [running]> on host 6f79091f056a
+[2026-04-28T05:37:11.907+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='evaluation' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T05:37:11.909+0000] {pipeline_dag.py:42} INFO - Starting evaluation...
+[2026-04-28T05:37:13.482+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-04-28T05:37:13.498+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=energy_pipeline, task_id=evaluation, execution_date=20260427T000000, start_date=20260428T053711, end_date=20260428T053713
+[2026-04-28T05:37:13.518+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-28T05:37:13.532+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-28T05:46:20.137+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:46:20.148+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:46:20.148+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-04-28T05:46:20.166+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): evaluation> on 2026-04-27 00:00:00+00:00
+[2026-04-28T05:46:20.172+0000] {standard_task_runner.py:60} INFO - Started process 387 to run task
+[2026-04-28T05:46:20.176+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'evaluation', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '7', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpevptrlbe']
+[2026-04-28T05:46:20.179+0000] {standard_task_runner.py:88} INFO - Job 7: Subtask evaluation
+[2026-04-28T05:46:20.237+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [running]> on host 033d1c5c127a
+[2026-04-28T05:46:20.317+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='evaluation' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T05:46:20.319+0000] {pipeline_dag.py:42} INFO - Starting evaluation...
+[2026-04-28T05:46:21.897+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-04-28T05:46:21.906+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=energy_pipeline, task_id=evaluation, execution_date=20260427T000000, start_date=20260428T054620, end_date=20260428T054621
+[2026-04-28T05:46:21.933+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-28T05:46:21.953+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-28T08:57:36.714+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T08:57:36.723+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T08:57:36.723+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-04-28T08:57:36.739+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): evaluation> on 2026-04-27 00:00:00+00:00
+[2026-04-28T08:57:36.746+0000] {standard_task_runner.py:60} INFO - Started process 349 to run task
+[2026-04-28T08:57:36.750+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'evaluation', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '26', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmp92kk501q']
+[2026-04-28T08:57:36.753+0000] {standard_task_runner.py:88} INFO - Job 26: Subtask evaluation
+[2026-04-28T08:57:36.814+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.evaluation scheduled__2026-04-27T00:00:00+00:00 [running]> on host 0cef51ed321f
+[2026-04-28T08:57:36.880+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='evaluation' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T08:57:36.881+0000] {pipeline_dag.py:42} INFO - Starting evaluation...
+[2026-04-28T08:57:38.634+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-04-28T08:57:38.642+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=energy_pipeline, task_id=evaluation, execution_date=20260427T000000, start_date=20260428T085736, end_date=20260428T085738
+[2026-04-28T08:57:38.659+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-28T08:57:38.674+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

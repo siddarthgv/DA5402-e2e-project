@@ -1,0 +1,8 @@
+artifact_location: file:///Users/gvsiddarth/Downloads/mlops-e2e-project/mlruns/355382003948439940
+creation_time: 1777391854235
+experiment_id: '355382003948439940'
+last_update_time: 1777391854235
+lifecycle_stage: active
+name: energy-predictor-gold
+trace_location: null
+workspace: default

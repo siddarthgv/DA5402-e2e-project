@@ -6,6 +6,7 @@ stages:
     - src/ingestion.py
     outs:
     - data/processed/raw_loaded.csv
+
   preprocessing:
     cmd: python src/preprocessing.py
     deps:
@@ -13,6 +14,7 @@ stages:
     - src/preprocessing.py
     outs:
     - data/processed/clean.csv
+
   feature_engineering:
     cmd: python src/feature_engineering.py
     deps:
@@ -20,6 +22,7 @@ stages:
     - src/feature_engineering.py
     outs:
     - data/processed/features.csv
+
   training:
     cmd: python src/train.py
     deps:
@@ -27,11 +30,12 @@ stages:
     - src/train.py
     outs:
     - models/model.pkl
+    metrics:
+    - metrics/metrics.json  
+
   evaluation:
     cmd: python src/evaluate.py
     deps:
     - data/processed/features.csv
     - models/model.pkl
     - src/evaluate.py
-    outs:
-    - metrics.json

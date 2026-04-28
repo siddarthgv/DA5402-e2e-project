@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gvsiddarth/Downloads/mlops-e2e-project/mlruns/355382003948439940/a4f168aec0824dd08c64217b2c1aa65a/artifacts
+end_time: 1777391859366
+entry_point_name: ''
+experiment_id: '355382003948439940'
+lifecycle_stage: active
+run_id: a4f168aec0824dd08c64217b2c1aa65a
+run_name: LinearRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777391854518
+status: 3
+tags: []
+user_id: gvsiddarth

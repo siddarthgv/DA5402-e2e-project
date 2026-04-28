@@ -1,0 +1,14 @@
+[2026-04-28T17:05:27.757+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.preprocessing manual__2026-04-28T17:04:18.887998+00:00 [queued]>
+[2026-04-28T17:05:27.766+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.preprocessing manual__2026-04-28T17:04:18.887998+00:00 [queued]>
+[2026-04-28T17:05:27.767+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-04-28T17:05:27.784+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): preprocessing> on 2026-04-28 17:04:18.887998+00:00
+[2026-04-28T17:05:27.795+0000] {standard_task_runner.py:60} INFO - Started process 195 to run task
+[2026-04-28T17:05:27.799+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'preprocessing', 'manual__2026-04-28T17:04:18.887998+00:00', '--job-id', '186', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpi21vgaay']
+[2026-04-28T17:05:27.802+0000] {standard_task_runner.py:88} INFO - Job 186: Subtask preprocessing
+[2026-04-28T17:05:27.866+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.preprocessing manual__2026-04-28T17:04:18.887998+00:00 [running]> on host 5b1cb9b23751
+[2026-04-28T17:05:27.948+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='preprocessing' AIRFLOW_CTX_EXECUTION_DATE='2026-04-28T17:04:18.887998+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-28T17:04:18.887998+00:00'
+[2026-04-28T17:05:27.949+0000] {pipeline_dag.py:27} INFO - Starting preprocessing...
+[2026-04-28T17:06:02.616+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-04-28T17:06:02.628+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=energy_pipeline, task_id=preprocessing, execution_date=20260428T170418, start_date=20260428T170527, end_date=20260428T170602
+[2026-04-28T17:06:02.652+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-28T17:06:02.672+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

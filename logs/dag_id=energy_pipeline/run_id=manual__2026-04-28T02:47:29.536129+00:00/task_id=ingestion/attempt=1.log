@@ -1,0 +1,44 @@
+[2026-04-28T02:47:36.596+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.ingestion manual__2026-04-28T02:47:29.536129+00:00 [queued]>
+[2026-04-28T02:47:36.606+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.ingestion manual__2026-04-28T02:47:29.536129+00:00 [queued]>
+[2026-04-28T02:47:36.607+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2026-04-28T02:47:36.631+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): ingestion> on 2026-04-28 02:47:29.536129+00:00
+[2026-04-28T02:47:36.644+0000] {standard_task_runner.py:60} INFO - Started process 295 to run task
+[2026-04-28T02:47:36.649+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'ingestion', 'manual__2026-04-28T02:47:29.536129+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmp323tqrdw']
+[2026-04-28T02:47:36.652+0000] {standard_task_runner.py:88} INFO - Job 8: Subtask ingestion
+[2026-04-28T02:47:36.711+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.ingestion manual__2026-04-28T02:47:29.536129+00:00 [running]> on host e2a4d77dd15e
+[2026-04-28T02:47:36.858+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='ingestion' AIRFLOW_CTX_EXECUTION_DATE='2026-04-28T02:47:29.536129+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-04-28T02:47:29.536129+00:00'
+[2026-04-28T02:47:36.865+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-28T02:47:36.872+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/airflow/src/ingestion.py']
+[2026-04-28T02:47:36.887+0000] {subprocess.py:86} INFO - Output:
+[2026-04-28T02:47:45.789+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-04-28T02:47:45.790+0000] {subprocess.py:93} INFO -   File "/opt/airflow/src/ingestion.py", line 14, in <module>
+[2026-04-28T02:47:45.790+0000] {subprocess.py:93} INFO -     df.to_csv("opt/airflow/data/processed/raw_loaded.csv", index=False)
+[2026-04-28T02:47:45.791+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+[2026-04-28T02:47:45.797+0000] {subprocess.py:93} INFO -     return func(*args, **kwargs)
+[2026-04-28T02:47:45.798+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T02:47:45.798+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pandas/core/generic.py", line 3967, in to_csv
+[2026-04-28T02:47:45.799+0000] {subprocess.py:93} INFO -     return DataFrameRenderer(formatter).to_csv(
+[2026-04-28T02:47:45.803+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T02:47:45.805+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pandas/io/formats/format.py", line 1014, in to_csv
+[2026-04-28T02:47:45.805+0000] {subprocess.py:93} INFO -     csv_formatter.save()
+[2026-04-28T02:47:45.806+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pandas/io/formats/csvs.py", line 251, in save
+[2026-04-28T02:47:45.806+0000] {subprocess.py:93} INFO -     with get_handle(
+[2026-04-28T02:47:45.807+0000] {subprocess.py:93} INFO -          ^^^^^^^^^^^
+[2026-04-28T02:47:45.810+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pandas/io/common.py", line 749, in get_handle
+[2026-04-28T02:47:45.810+0000] {subprocess.py:93} INFO -     check_parent_directory(str(handle))
+[2026-04-28T02:47:45.811+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pandas/io/common.py", line 616, in check_parent_directory
+[2026-04-28T02:47:45.811+0000] {subprocess.py:93} INFO -     raise OSError(rf"Cannot save file into a non-existent directory: '{parent}'")
+[2026-04-28T02:47:45.813+0000] {subprocess.py:93} INFO - OSError: Cannot save file into a non-existent directory: 'opt/airflow/data/processed'
+[2026-04-28T02:47:46.004+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-04-28T02:47:46.013+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-04-28T02:47:46.017+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=energy_pipeline, task_id=ingestion, execution_date=20260428T024729, start_date=20260428T024736, end_date=20260428T024746
+[2026-04-28T02:47:46.029+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 8 for task ingestion (Bash command failed. The command returned a non-zero exit code 1.; 295)
+[2026-04-28T02:47:46.037+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-04-28T02:47:46.058+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

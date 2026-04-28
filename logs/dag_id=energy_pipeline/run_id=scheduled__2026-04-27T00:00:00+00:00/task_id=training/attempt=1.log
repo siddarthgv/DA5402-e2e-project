@@ -1,0 +1,220 @@
+[2026-04-28T03:00:34.026+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T03:00:34.032+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T03:00:34.033+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2026-04-28T03:00:34.044+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): training> on 2026-04-27 00:00:00+00:00
+[2026-04-28T03:00:34.050+0000] {standard_task_runner.py:60} INFO - Started process 227 to run task
+[2026-04-28T03:00:34.053+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'training', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpzcdw3xfj']
+[2026-04-28T03:00:34.055+0000] {standard_task_runner.py:88} INFO - Job 6: Subtask training
+[2026-04-28T03:00:34.094+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [running]> on host 0fcbcd70b84a
+[2026-04-28T03:00:34.144+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='training' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T03:00:34.145+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-28T03:00:34.146+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/airflow/src/train.py']
+[2026-04-28T03:00:34.155+0000] {subprocess.py:86} INFO - Output:
+[2026-04-28T03:00:36.513+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2026-04-28T03:00:36.513+0000] {subprocess.py:93} INFO -   File "/opt/airflow/src/train.py", line 6, in <module>
+[2026-04-28T03:00:36.514+0000] {subprocess.py:93} INFO -     import mlflow
+[2026-04-28T03:00:36.515+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/__init__.py", line 44, in <module>
+[2026-04-28T03:00:36.515+0000] {subprocess.py:93} INFO -     from mlflow import (
+[2026-04-28T03:00:36.516+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/genai/__init__.py", line 1, in <module>
+[2026-04-28T03:00:36.516+0000] {subprocess.py:93} INFO -     from mlflow.genai import (
+[2026-04-28T03:00:36.517+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/genai/judges/__init__.py", line 2, in <module>
+[2026-04-28T03:00:36.520+0000] {subprocess.py:93} INFO -     from mlflow.genai.judges import utils  # noqa: F401
+[2026-04-28T03:00:36.520+0000] {subprocess.py:93} INFO -     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.520+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/genai/judges/utils/__init__.py", line 14, in <module>
+[2026-04-28T03:00:36.521+0000] {subprocess.py:93} INFO -     from mlflow.genai.judges.adapters.litellm_adapter import (
+[2026-04-28T03:00:36.521+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/genai/judges/adapters/litellm_adapter.py", line 25, in <module>
+[2026-04-28T03:00:36.521+0000] {subprocess.py:93} INFO -     from mlflow.gateway.constants import MLFLOW_GATEWAY_CALLER_HEADER, GatewayCaller
+[2026-04-28T03:00:36.525+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/gateway/__init__.py", line 1, in <module>
+[2026-04-28T03:00:36.525+0000] {subprocess.py:93} INFO -     from mlflow.gateway.utils import get_gateway_uri, set_gateway_uri
+[2026-04-28T03:00:36.525+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/mlflow/gateway/utils.py", line 10, in <module>
+[2026-04-28T03:00:36.526+0000] {subprocess.py:93} INFO -     from fastapi import HTTPException
+[2026-04-28T03:00:36.526+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/fastapi/__init__.py", line 7, in <module>
+[2026-04-28T03:00:36.526+0000] {subprocess.py:93} INFO -     from .applications import FastAPI as FastAPI
+[2026-04-28T03:00:36.527+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/fastapi/applications.py", line 6, in <module>
+[2026-04-28T03:00:36.527+0000] {subprocess.py:93} INFO -     from fastapi import routing
+[2026-04-28T03:00:36.529+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/fastapi/routing.py", line 35, in <module>
+[2026-04-28T03:00:36.529+0000] {subprocess.py:93} INFO -     from fastapi import params
+[2026-04-28T03:00:36.529+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/fastapi/params.py", line 8, in <module>
+[2026-04-28T03:00:36.530+0000] {subprocess.py:93} INFO -     from fastapi.openapi.models import Example
+[2026-04-28T03:00:36.530+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/fastapi/openapi/models.py", line 61, in <module>
+[2026-04-28T03:00:36.530+0000] {subprocess.py:93} INFO -     class Contact(BaseModelWithConfig):
+[2026-04-28T03:00:36.530+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_model_construction.py", line 256, in __new__
+[2026-04-28T03:00:36.532+0000] {subprocess.py:93} INFO -     complete_model_class(
+[2026-04-28T03:00:36.532+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_model_construction.py", line 667, in complete_model_class
+[2026-04-28T03:00:36.533+0000] {subprocess.py:93} INFO -     schema = gen_schema.generate_schema(cls)
+[2026-04-28T03:00:36.533+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.534+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 744, in generate_schema
+[2026-04-28T03:00:36.534+0000] {subprocess.py:93} INFO -     schema = self._generate_schema_inner(obj)
+[2026-04-28T03:00:36.536+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.536+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1028, in _generate_schema_inner
+[2026-04-28T03:00:36.536+0000] {subprocess.py:93} INFO -     return self._model_schema(obj)
+[2026-04-28T03:00:36.537+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.538+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 858, in _model_schema
+[2026-04-28T03:00:36.538+0000] {subprocess.py:93} INFO -     {k: self._generate_md_field_schema(k, v, decorators) for k, v in fields.items()},
+[2026-04-28T03:00:36.538+0000] {subprocess.py:93} INFO -     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.541+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 858, in <dictcomp>
+[2026-04-28T03:00:36.541+0000] {subprocess.py:93} INFO -     {k: self._generate_md_field_schema(k, v, decorators) for k, v in fields.items()},
+[2026-04-28T03:00:36.541+0000] {subprocess.py:93} INFO -         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.542+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1235, in _generate_md_field_schema
+[2026-04-28T03:00:36.542+0000] {subprocess.py:93} INFO -     schema, metadata = self._common_field_schema(name, field_info, decorators)
+[2026-04-28T03:00:36.542+0000] {subprocess.py:93} INFO -                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.544+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1289, in _common_field_schema
+[2026-04-28T03:00:36.544+0000] {subprocess.py:93} INFO -     schema = self._apply_annotations(
+[2026-04-28T03:00:36.544+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.546+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 2242, in _apply_annotations
+[2026-04-28T03:00:36.546+0000] {subprocess.py:93} INFO -     schema = get_inner_schema(source_type)
+[2026-04-28T03:00:36.546+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.548+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_schema_generation_shared.py", line 83, in __call__
+[2026-04-28T03:00:36.548+0000] {subprocess.py:93} INFO -     schema = self._handler(source_type)
+[2026-04-28T03:00:36.548+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.549+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 2221, in inner_handler
+[2026-04-28T03:00:36.551+0000] {subprocess.py:93} INFO -     schema = self._generate_schema_inner(obj)
+[2026-04-28T03:00:36.551+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.551+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1033, in _generate_schema_inner
+[2026-04-28T03:00:36.552+0000] {subprocess.py:93} INFO -     return self.match_type(obj)
+[2026-04-28T03:00:36.554+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.554+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1151, in match_type
+[2026-04-28T03:00:36.554+0000] {subprocess.py:93} INFO -     return self._match_generic_type(obj, origin)
+[2026-04-28T03:00:36.555+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.555+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1174, in _match_generic_type
+[2026-04-28T03:00:36.556+0000] {subprocess.py:93} INFO -     return self._union_schema(obj)
+[2026-04-28T03:00:36.556+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.557+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 1334, in _union_schema
+[2026-04-28T03:00:36.557+0000] {subprocess.py:93} INFO -     choices.append(self.generate_schema(arg))
+[2026-04-28T03:00:36.558+0000] {subprocess.py:93} INFO -                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.559+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 741, in generate_schema
+[2026-04-28T03:00:36.559+0000] {subprocess.py:93} INFO -     schema = self._generate_schema_from_get_schema_method(obj, obj)
+[2026-04-28T03:00:36.559+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2026-04-28T03:00:36.560+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py", line 921, in _generate_schema_from_get_schema_method
+[2026-04-28T03:00:36.560+0000] {subprocess.py:93} INFO -     schema = get_schema(
+[2026-04-28T03:00:36.560+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^
+[2026-04-28T03:00:36.561+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/networks.py", line 1006, in __get_pydantic_core_schema__
+[2026-04-28T03:00:36.561+0000] {subprocess.py:93} INFO -     import_email_validator()
+[2026-04-28T03:00:36.562+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.11/site-packages/pydantic/networks.py", line 970, in import_email_validator
+[2026-04-28T03:00:36.562+0000] {subprocess.py:93} INFO -     raise ImportError('email-validator version >= 2.0 required, run pip install -U email-validator')
+[2026-04-28T03:00:36.562+0000] {subprocess.py:93} INFO - ImportError: email-validator version >= 2.0 required, run pip install -U email-validator
+[2026-04-28T03:00:36.793+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2026-04-28T03:00:36.800+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2026-04-28T03:00:36.804+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=energy_pipeline, task_id=training, execution_date=20260427T000000, start_date=20260428T030034, end_date=20260428T030036
+[2026-04-28T03:00:36.814+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 6 for task training (Bash command failed. The command returned a non-zero exit code 1.; 227)
+[2026-04-28T03:00:36.821+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-04-28T03:00:36.835+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-04-28T03:11:40.532+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T03:11:40.540+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T03:11:40.541+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2026-04-28T03:11:40.553+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): training> on 2026-04-27 00:00:00+00:00
+[2026-04-28T03:11:40.560+0000] {standard_task_runner.py:60} INFO - Started process 227 to run task
+[2026-04-28T03:11:40.564+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'training', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmplpgs9fk6']
+[2026-04-28T03:11:40.566+0000] {standard_task_runner.py:88} INFO - Job 6: Subtask training
+[2026-04-28T03:11:40.612+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [running]> on host 8820d01f94c2
+[2026-04-28T03:11:40.674+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='training' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T03:11:40.676+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2026-04-28T03:11:40.677+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/airflow/src/train.py']
+[2026-04-28T03:11:40.687+0000] {subprocess.py:86} INFO - Output:
+[2026-04-28T03:11:43.417+0000] {subprocess.py:93} INFO - /home/airflow/.local/lib/python3.11/site-packages/mlflow/tracking/_tracking_service/utils.py:184: FutureWarning: The filesystem tracking backend (e.g., './mlruns') is deprecated as of February 2026. Consider transitioning to a database backend (e.g., 'sqlite:///mlflow.db') to take advantage of the latest MLflow features. See https://mlflow.org/docs/latest/self-hosting/migrate-from-file-store for migration guidance.
+[2026-04-28T03:11:43.418+0000] {subprocess.py:93} INFO -   return FileStore(store_uri, store_uri)
+[2026-04-28T03:11:43.427+0000] {subprocess.py:93} INFO - 2026/04/28 03:11:43 INFO mlflow.tracking.fluent: Experiment with name 'energy-predictor' does not exist. Creating a new experiment.
+[2026-04-28T03:11:43.434+0000] {subprocess.py:93} INFO - 2026-04-28 03:11:43,433 - INFO - Loading dataset...
+[2026-04-28T03:11:43.559+0000] {subprocess.py:93} INFO - 2026-04-28 03:11:43,558 - INFO - Splitting dataset...
+[2026-04-28T03:11:43.613+0000] {subprocess.py:93} INFO - 2026/04/28 03:11:43 WARNING mlflow.utils.git_utils: Failed to import Git (the Git executable is probably not on your PATH), so Git SHA is not available. Error: Failed to initialize: Bad git executable.
+[2026-04-28T03:11:43.613+0000] {subprocess.py:93} INFO - The git executable must be specified in one of the following ways:
+[2026-04-28T03:11:43.614+0000] {subprocess.py:93} INFO -     - be included in your $PATH
+[2026-04-28T03:11:43.614+0000] {subprocess.py:93} INFO -     - be set via $GIT_PYTHON_GIT_EXECUTABLE
+[2026-04-28T03:11:43.614+0000] {subprocess.py:93} INFO -     - explicitly set via git.refresh(<full-path-to-git-executable>)
+[2026-04-28T03:11:43.615+0000] {subprocess.py:93} INFO - 
+[2026-04-28T03:11:43.615+0000] {subprocess.py:93} INFO - All git commands will error until this is rectified.
+[2026-04-28T03:11:43.616+0000] {subprocess.py:93} INFO - 
+[2026-04-28T03:11:43.616+0000] {subprocess.py:93} INFO - This initial message can be silenced or aggravated in the future by setting the
+[2026-04-28T03:11:43.616+0000] {subprocess.py:93} INFO - $GIT_PYTHON_REFRESH environment variable. Use one of the following values:
+[2026-04-28T03:11:43.617+0000] {subprocess.py:93} INFO -     - quiet|q|silence|s|silent|none|n|0: for no message or exception
+[2026-04-28T03:11:43.617+0000] {subprocess.py:93} INFO -     - warn|w|warning|log|l|1: for a warning message (logging level CRITICAL, displayed by default)
+[2026-04-28T03:11:43.617+0000] {subprocess.py:93} INFO -     - error|e|exception|raise|r|2: for a raised exception
+[2026-04-28T03:11:43.618+0000] {subprocess.py:93} INFO - 
+[2026-04-28T03:11:43.618+0000] {subprocess.py:93} INFO - Example:
+[2026-04-28T03:11:43.618+0000] {subprocess.py:93} INFO -     export GIT_PYTHON_REFRESH=quiet
+[2026-04-28T03:11:43.619+0000] {subprocess.py:93} INFO - 
+[2026-04-28T03:11:43.640+0000] {subprocess.py:93} INFO - 2026-04-28 03:11:43,639 - INFO - Linear Regression RMSE: 0.5172533689364592
+[2026-04-28T03:11:43.672+0000] {subprocess.py:93} INFO - 2026/04/28 03:11:43 WARNING mlflow.models.model: `artifact_path` is deprecated. Please use `name` instead.
+[2026-04-28T03:11:43.700+0000] {subprocess.py:93} INFO - 2026/04/28 03:11:43 WARNING mlflow.sklearn: Saving scikit-learn models in the pickle or cloudpickle format requires exercising caution because these formats rely on Python's object serialization mechanism, which can execute arbitrary code during deserialization. The recommended safe alternative is the 'skops' format. For more information, see: https://scikit-learn.org/stable/model_persistence.html
+[2026-04-28T03:11:48.353+0000] {subprocess.py:93} INFO - 2026-04-28 03:11:48,353 - INFO - XGBoost RMSE: 0.4567747757148791
+[2026-04-28T03:11:48.383+0000] {subprocess.py:93} INFO - 2026/04/28 03:11:48 WARNING mlflow.models.model: `artifact_path` is deprecated. Please use `name` instead.
+[2026-04-28T03:11:48.409+0000] {subprocess.py:93} INFO - 2026/04/28 03:11:48 WARNING mlflow.sklearn: Saving scikit-learn models in the pickle or cloudpickle format requires exercising caution because these formats rely on Python's object serialization mechanism, which can execute arbitrary code during deserialization. The recommended safe alternative is the 'skops' format. For more information, see: https://scikit-learn.org/stable/model_persistence.html
+[2026-04-28T03:11:51.602+0000] {subprocess.py:93} INFO - 2026-04-28 03:11:51,600 - INFO - Model saved at /opt/airflow/models/model.pkl
+[2026-04-28T03:11:51.993+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2026-04-28T03:11:52.021+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=energy_pipeline, task_id=training, execution_date=20260427T000000, start_date=20260428T031140, end_date=20260428T031152
+[2026-04-28T03:11:52.038+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-28T03:11:52.052+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-04-28T05:12:33.125+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:12:33.134+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:12:33.135+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-04-28T05:12:33.151+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): training> on 2026-04-27 00:00:00+00:00
+[2026-04-28T05:12:33.158+0000] {standard_task_runner.py:60} INFO - Started process 221 to run task
+[2026-04-28T05:12:33.163+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'training', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmprxogg_t1']
+[2026-04-28T05:12:33.166+0000] {standard_task_runner.py:88} INFO - Job 9: Subtask training
+[2026-04-28T05:12:33.222+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [running]> on host e1402bd03830
+[2026-04-28T05:12:33.306+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='training' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T05:12:33.308+0000] {pipeline_dag.py:37} INFO - Starting training...
+[2026-04-28T05:12:53.382+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-04-28T05:12:53.391+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=energy_pipeline, task_id=training, execution_date=20260427T000000, start_date=20260428T051233, end_date=20260428T051253
+[2026-04-28T05:12:53.410+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-28T05:12:53.429+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-04-28T05:35:22.954+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:35:22.960+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:35:22.961+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-04-28T05:35:22.974+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): training> on 2026-04-27 00:00:00+00:00
+[2026-04-28T05:35:22.979+0000] {standard_task_runner.py:60} INFO - Started process 170 to run task
+[2026-04-28T05:35:22.983+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'training', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpuma6sa14']
+[2026-04-28T05:35:22.985+0000] {standard_task_runner.py:88} INFO - Job 5: Subtask training
+[2026-04-28T05:35:23.026+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [running]> on host 25d4ee3373b6
+[2026-04-28T05:35:23.090+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='training' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T05:35:23.092+0000] {pipeline_dag.py:37} INFO - Starting training...
+[2026-04-28T05:35:30.997+0000] {local_task_job_runner.py:121} ERROR - Received SIGTERM. Terminating subprocesses
+[2026-04-28T05:36:56.051+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:36:56.059+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:36:56.060+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-04-28T05:36:56.073+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): training> on 2026-04-27 00:00:00+00:00
+[2026-04-28T05:36:56.079+0000] {standard_task_runner.py:60} INFO - Started process 170 to run task
+[2026-04-28T05:36:56.083+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'training', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpzecg3tcj']
+[2026-04-28T05:36:56.086+0000] {standard_task_runner.py:88} INFO - Job 5: Subtask training
+[2026-04-28T05:36:56.130+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [running]> on host 6f79091f056a
+[2026-04-28T05:36:56.196+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='training' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T05:36:56.198+0000] {pipeline_dag.py:37} INFO - Starting training...
+[2026-04-28T05:37:08.405+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-04-28T05:37:08.411+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=energy_pipeline, task_id=training, execution_date=20260427T000000, start_date=20260428T053656, end_date=20260428T053708
+[2026-04-28T05:37:08.443+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-28T05:37:08.456+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-04-28T05:46:02.842+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:46:02.856+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T05:46:02.857+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-04-28T05:46:02.879+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): training> on 2026-04-27 00:00:00+00:00
+[2026-04-28T05:46:02.886+0000] {standard_task_runner.py:60} INFO - Started process 231 to run task
+[2026-04-28T05:46:02.891+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'training', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmpzmavcs5r']
+[2026-04-28T05:46:02.893+0000] {standard_task_runner.py:88} INFO - Job 6: Subtask training
+[2026-04-28T05:46:02.956+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [running]> on host 033d1c5c127a
+[2026-04-28T05:46:03.046+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='training' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T05:46:03.048+0000] {pipeline_dag.py:37} INFO - Starting training...
+[2026-04-28T05:46:16.319+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-04-28T05:46:16.329+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=energy_pipeline, task_id=training, execution_date=20260427T000000, start_date=20260428T054602, end_date=20260428T054616
+[2026-04-28T05:46:16.348+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-28T05:46:16.367+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-04-28T08:57:18.499+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T08:57:18.505+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [queued]>
+[2026-04-28T08:57:18.506+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-04-28T08:57:18.517+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): training> on 2026-04-27 00:00:00+00:00
+[2026-04-28T08:57:18.522+0000] {standard_task_runner.py:60} INFO - Started process 194 to run task
+[2026-04-28T08:57:18.524+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'energy_pipeline', 'training', 'scheduled__2026-04-27T00:00:00+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/pipeline_dag.py', '--cfg-path', '/tmp/tmprtgd12nn']
+[2026-04-28T08:57:18.526+0000] {standard_task_runner.py:88} INFO - Job 25: Subtask training
+[2026-04-28T08:57:18.567+0000] {task_command.py:423} INFO - Running <TaskInstance: energy_pipeline.training scheduled__2026-04-27T00:00:00+00:00 [running]> on host 0cef51ed321f
+[2026-04-28T08:57:18.621+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='energy_pipeline' AIRFLOW_CTX_TASK_ID='training' AIRFLOW_CTX_EXECUTION_DATE='2026-04-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2026-04-27T00:00:00+00:00'
+[2026-04-28T08:57:18.622+0000] {pipeline_dag.py:37} INFO - Starting training...
+[2026-04-28T08:57:31.836+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-04-28T08:57:31.869+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=energy_pipeline, task_id=training, execution_date=20260427T000000, start_date=20260428T085718, end_date=20260428T085731
+[2026-04-28T08:57:31.912+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-04-28T08:57:31.999+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check

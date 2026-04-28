@@ -1,10 +1,12 @@
 import pandas as pd
 import logging
+import os
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
+
 def preprocess(input_path, output_path):
     logging.info("Loading data...")
     df = pd.read_csv(input_path, na_values=['?'], low_memory=False)
@@ -33,5 +35,10 @@ def preprocess(input_path, output_path):
     logging.info(f"Saved cleaned data to {output_path}")
 
 if __name__ == "__main__":
-    preprocess("data/processed/raw_loaded.csv",
-               "data/processed/clean.csv")
+    base = os.getenv("AIRFLOW_HOME", os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+    processed_dir = os.getenv("PROCESSED_DIR", os.path.join(base, "data/processed"))
+
+    preprocess(
+        os.path.join(processed_dir, "raw_loaded.csv"),
+        os.path.join(processed_dir, "clean.csv")
+    )

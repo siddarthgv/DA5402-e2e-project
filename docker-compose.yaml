@@ -1,0 +1,107 @@
+x-airflow-common: &airflow-common
+  build: .
+  environment:
+    AIRFLOW__CORE__EXECUTOR: SequentialExecutor
+    AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "false"
+    AIRFLOW__CORE__FERNET_KEY: "oEyYyKDxynAS3L5CaJAXhBE6tsFKjYAPg24nUIpJ9fk="
+    MLFLOW_TRACKING_URI: "http://mlflow:5000"
+    PYTHONUNBUFFERED: "1"
+    PYTHONWARNINGS: "ignore::DeprecationWarning"
+    no_proxy: "*"
+    GIT_PYTHON_REFRESH: "quiet"
+
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./logs:/opt/airflow/logs
+    - ./plugins:/opt/airflow/plugins
+    - ./data:/opt/airflow/data
+    - ./src:/opt/airflow/src
+    - ./airflow.db:/opt/airflow/airflow.db
+    - ./models:/opt/airflow/models
+
+  user: "${AIRFLOW_UID:-50000}"
+
+services:
+
+  airflow:
+    <<: *airflow-common
+    container_name: airflow
+    command: >
+      bash -c "
+      airflow db migrate &&
+      airflow standalone
+      "
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mlflow
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    container_name: mlflow
+    command: >
+      bash -c "
+      mkdir -p /mlflow /mlruns &&
+      mlflow server
+      --backend-store-uri sqlite:////mlflow/mlflow.db
+      --default-artifact-root http://host.docker.internal:5001/api/2.0/mlflow-artifacts/
+      --host 0.0.0.0
+      --port 5000
+      --serve-artifacts
+      "
+    environment:
+      MLFLOW_SERVER_ALLOWED_HOSTS: "*"
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./mlruns:/mlruns
+      - ./mlflow_db:/mlflow
+    
+    restart: always
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./alerts.yml:/etc/prometheus/alerts.yml
+    ports:
+      - "9090:9090"
+    depends_on:
+      - fastapi
+    restart: always
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    volumes:
+     - grafana-data:/var/lib/grafana
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile.fastapi
+
+    container_name: fastapi
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./src:/app/src
+      - ./models:/app/models
+
+    environment:
+      PYTHONPATH: /app
+    
+    restart: always
+
+    command: uvicorn src.api:app --host 0.0.0.0 --port 8000
+
+volumes:
+  grafana-data:
