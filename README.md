@@ -13,40 +13,42 @@ The system is fully containerized using Docker and orchestrated with Airflow.
 
 Project Structure
 -----------------
+
 .
-├── airflow/                 # Airflow setup and configs
+├── airflow/                         # Airflow setup and configs
 ├── dags/
-│   └── pipeline_dag.py      # Main Airflow DAG
+│   └── pipeline_dag.py              # Main Airflow DAG
 ├── data/
-│   ├── raw/                 # Raw input data
-│   ├── processed/           # Cleaned datasets
-│   └── chunks_head/         # Intermediate splits
-├── logs/                    # Prediction logs
-├── metrics/                 # Metrics storage
-├── mlflow_db/               # MLflow backend database
-├── mlruns/                  # MLflow experiment artifacts
+│   ├── raw/                         # Raw input data
+│   ├── processed/                   # Cleaned datasets
+│   └── chunks_head/                 # Intermediate splits
+├── logs/                            # Prediction logs
+├── metrics/                         # Metrics storage
+├── mlflow_db/                       # MLflow backend database
+├── mlruns/                          # MLflow experiment artifacts
 ├── models/
-│   └── model.pkl            # Trained model
+│   └── model.pkl                    # Trained model
 ├── src/
-│   ├── api.py               # FastAPI inference service
-│   ├── app.py               # Streamlit frontend
-│   ├── ingestion.py         # Data ingestion
-│   ├── preprocessing.py     # Data preprocessing
-│   ├── feature_engineering.py
-│   ├── train.py             # Model training
-│   └── evaluate.py          # Model evaluation
-├── docker-compose.yaml      # Multi-service orchestration
-├── Dockerfile               # Base container
-├── Dockerfile.fastapi       # FastAPI service container
-├── prometheus.yml           # Prometheus config
-├── alerts.yml               # Alert rules
-├── airflow.db               # Airflow metadata DB
+│   ├── api.py                       # FastAPI inference service
+│   ├── app.py                       # Streamlit frontend
+│   ├── ingestion.py                 # Data ingestion
+│   ├── preprocessing.py             # Data preprocessing
+│   ├── feature_engineering.py       # Feature engineering
+│   ├── train.py                     # Model training
+│   └── evaluate.py                  # Model evaluation
+├── docker-compose.yaml              # Multi-service orchestration
+├── Dockerfile                       # Base container
+├── Dockerfile.fastapi               # FastAPI service container
+├── prometheus.yml                   # Prometheus configuration
+├── alerts.yml                       # Alert rules
+├── airflow.db                       # Airflow metadata DB
 ├── requirements.txt
 ├── fastapi-requirements.txt
 ├── airflow-requirements.txt
-├── params.yaml              # Model/config parameters
-├── dvc.yaml / dvc.lock      # DVC pipeline tracking
-├── test.csv                 # Test dataset
+├── params.yaml                      # Model/config parameters
+├── dvc.yaml
+├── dvc.lock                         # DVC pipeline tracking
+├── test.csv                         # Test dataset
 └── README.txt
 
 System Components
